@@ -33,3 +33,9 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 
 # loop_monitor()
+
+if __name__ == '__main__':
+    # loop_monitor()
+    # 在5000端口启动服务
+    import uvicorn
+    uvicorn.run(app, host='0.0.0.0', port=5000)
