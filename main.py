@@ -5,12 +5,22 @@ from fastapi import FastAPI
 import datetime
 import time
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+key = os.getenv("FAKE_VALUE")
+
+print('key:', key)
+
 
 def time_printer():
     now = datetime.datetime.now()
     ts = now.strftime('%Y-%m-%d %H:%M:%S')
     print('do func time :', ts)
 
+
+port = 5000
 
 app = FastAPI()
 
@@ -37,5 +47,6 @@ def read_item(item_id: int, q: Union[str, None] = None):
 if __name__ == '__main__':
     # loop_monitor()
     # 在5000端口启动服务
+    print('start server at port:', port)
     import uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=5000)
+    uvicorn.run(app, host='0.0.0.0', port=port)
